@@ -7,6 +7,7 @@ function ScrollToTop() {
   const [showToTopButton, setShowToTopButton] = useState(false);
 
   useEffect(() => {
+    // 최초 렌더링 이후에 윈도우 객체에 scroll event 등록
     window.addEventListener("scroll", () => {
       if (window.scrollY > 300) {
         setShowToTopButton(true);
@@ -15,9 +16,12 @@ function ScrollToTop() {
       }
     });
 
+    // 컴포넌트 unmount 될 때 event 제거
+    // 그렇지 않으면 불필요한 이벤트 구독 상태가 남게 됨
     return window.removeEventListener("scroll", () => {});
   }, []);
 
+  // 클릭 시에 scrollTo 메서들 통해서 상단에서 0 만큼 떨어진 위치로 스크롤
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
