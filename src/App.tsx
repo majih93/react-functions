@@ -1,10 +1,10 @@
 import "./App.css";
-import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import Timer from "./components/Timer/Timer";
 
 function App() {
   return (
     <div className="App">
-      <ScrollToTop />
+      <Timer min={3} />
     </div>
   );
 }
